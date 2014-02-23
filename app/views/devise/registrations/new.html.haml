@@ -13,5 +13,11 @@
     = f.label :password_confirmation
     %br/
     = f.password_field :password_confirmation
+  %div
+    = f.label :role
+    %br/
+    = f.select(:role, User::USER_TYPES_LIST)
+  
+  
   %div= f.submit "Sign up"
 = render "devise/shared/links"

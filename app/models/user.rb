@@ -12,7 +12,6 @@ class User < ActiveRecord::Base
     SELLER => { description: "Seller"}
   }
   USER_TYPES_LIST = USER_TYPES.collect{ |name, details| ["#{details[:description]}", name] }
-  
  
   def is_buyer?
    current_user.role == "buyer"
