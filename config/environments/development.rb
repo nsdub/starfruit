@@ -1,17 +1,15 @@
 Starfruit::Application.configure do
   
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
-  
-  config.action_mailer.delivery_method = :smtp
-
+  config.action_mailer.delivery_method = :smtp 
   config.action_mailer.smtp_settings = {
-  address: "smtp.gmail.com",
-  port: 587,
-  domain: ENV["GMAIL_DOMAIN"],
-  authentication: "plain",
-  enable_starttls_auto: true,
-  user_name: ENV["GMAIL_USERNAME"],
-  password: ENV["GMAIL_PASSWORD"]
+    :address   => "smtp.mandrillapp.com",
+    :port      => 25,
+    :enable_starttls_auto => true,
+    :user_name => ENV["SF_MANDRILL_USERNAME"],
+    :password  => ENV["SF_MANDRILL_API_KEY"],
+    :authentication => 'login',
+    :domain => 'starfruit-env-qtf8vnmzet.elasticbeanstalk.com'
   }
   
   # Settings specified here will take precedence over those in config/application.rb.
@@ -24,9 +22,13 @@ Starfruit::Application.configure do
   # Show full error reports and disable caching.
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
-
+  
+  # This may not be necessary for rails 4 apps?
+  ActionMailer::Base.delivery_method = :smtp
+  
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = true
+  
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log

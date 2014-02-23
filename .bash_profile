@@ -1,0 +1,2 @@
+export SF_MANDRILL_USERNAME="nanaartproductions@gmail.com"
+export SF_MANDRILL_API_KEY="u2ZY0KGfVHWK2a41HZJuwA"

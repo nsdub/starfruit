@@ -2,18 +2,10 @@ Starfruit::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
   
   config.action_mailer.default_url_options = { :host => 'http://starfruit-env-qtf8vnmzet.elasticbeanstalk.com/' }
-
-  config.action_mailer.delivery_method = :smtp 
-
-  config.action_mailer.smtp_settings = {
-  address: "smtp.gmail.com",
-  port: 587,
-  domain: ENV["GMAIL_DOMAIN"],
-  authentication: "plain",
-  enable_starttls_auto: true,
-  user_name: ENV["GMAIL_USERNAME"],
-  password: ENV["GMAIL_PASSWORD"]
-  }
+	config.action_mailer.delivery_method = :smtp
+	ActionMailer::Base.delivery_method = :smtp
+  
+  
 
   # Code is not reloaded between requests.
   config.cache_classes = true
@@ -48,6 +40,9 @@ Starfruit::Application.configure do
 
   # Version of your assets, change this if you want to expire all your assets.
   config.assets.version = '1.0'
+  
+  # This may not be necessary for rails 4 apps?
+  config.action_mailer.perform_deliveries = true
 
   # Specifies the header that your server uses for sending files.
   # config.action_dispatch.x_sendfile_header = "X-Sendfile" # for apache
