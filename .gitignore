@@ -15,3 +15,4 @@
 /log/*.log
 /tmp
 .elasticbeanstalk/
+starfruit.elasticbeanstalk/aws_credential_file
