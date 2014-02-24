@@ -2,9 +2,14 @@ Starfruit::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
   
   config.action_mailer.default_url_options = { :host => 'http://starfruit-env-qtf8vnmzet.elasticbeanstalk.com/' }
-	config.action_mailer.delivery_method = :smtp
-	ActionMailer::Base.delivery_method = :smtp
-  
+  config.action_mailer.smtp_settings = {
+      :address   => "smtp.mandrillapp.com",
+      :port      => 587,
+      :enable_starttls_auto => true,
+      :user_name => ENV["SF_MANDRILL_USERNAME"],
+      :password  => ENV["SF_MANDRILL_API_KEY"], 
+      :authentication => 'login'
+    }
   
 
   # Code is not reloaded between requests.

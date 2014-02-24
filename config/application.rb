@@ -20,16 +20,11 @@ module Starfruit
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
     
-    config.action_mailer.default_url_options = { :host => 'http://starfruit-env-qtf8vnmzet.elasticbeanstalk.com/' }
-    config.action_mailer.delivery_method = :smtp 
-    config.action_mailer.smtp_settings = {
-      :address   => "smtp.mandrillapp.com",
-      :port      => 25,
-      :enable_starttls_auto => true,
-      :user_name => ENV["SF_MANDRILL_USERNAME"],
-      :password  => ENV["SF_MANDRILL_API_KEY"],
-      :authentication => 'plain',
-      :domain => 'starfruit-env-qtf8vnmzet.elasticbeanstalk.com'
-    }
+    config.before_configuration do
+      env_file = File.join(Rails.root, 'config', 'local_env.yml')
+      YAML.load(File.open(env_file)).each do |key, value|
+        ENV[key.to_s] = value
+      end if File.exists?(env_file)
+    end
   end
 end
