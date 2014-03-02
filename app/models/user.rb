@@ -1,8 +1,10 @@
 class User < ActiveRecord::Base
+  attr_accessible :email, :password, :username, :role
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, 
          :validatable, :timeoutable, :confirmable, :lockable
-         
+  has_many :products
+  
   ADMIN = "admin"
   BUYER = "buyer"
   SELLER = "seller"
@@ -13,15 +15,15 @@ class User < ActiveRecord::Base
   }
   USER_TYPES_LIST = USER_TYPES.collect{ |name, details| ["#{details[:description]}", name] }
  
-  def is_buyer?
-   current_user.role == "buyer"
+  def is_buyer? 
+    self.role == "buyer"
   end
 
   def is_seller?
-   current_user.role == "seller"
+   self.role == "seller"
   end
 
   def is_admin?
-   current_user.role == "admin"
+   self.role == "admin"
   end
 end

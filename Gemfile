@@ -24,11 +24,26 @@ gem 'html2haml'
 
 gem 'better_errors'
 
+gem 'binding_of_caller'
+
 gem 'devise'
 
 gem 'mysql2'
 
 gem 'mail'
+
+gem 'pundit'
+
+gem 'aws-sdk'
+
+gem 'carrierwave'
+
+gem 'nokogiri'
+
+gem 'fog'
+
+gem 'protected_attributes'
+
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

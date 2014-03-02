@@ -1,0 +1,19 @@
+%h1 This is #{@seller.username}'s storefront
+%h3 Please buy my shit.
+
+/ Need to put permissions on storefront
+
+%h4
+  = link_to "Add a new product", new_product_path
+
+.product-collection
+  - @seller.products.each do |product|
+    .product
+      %h6 Title: #{product.title}
+      %h6 Description: #{product.description}
+      %h6 
+        Asset: 
+        = link_to "View stored resource", product.asset.to_s
+      
+
+

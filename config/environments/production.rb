@@ -10,6 +10,7 @@ Starfruit::Application.configure do
       :password  => ENV["SF_MANDRILL_API_KEY"], 
       :authentication => 'login'
     }
+    
   
 
   # Code is not reloaded between requests.
