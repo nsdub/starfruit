@@ -17,6 +17,10 @@
     = f.label :role
     %br/
     = f.select(:role, User::USER_TYPES_LIST)
+  %div
+    = f.label :username
+    %br/
+    = f.text_field :username
   
   
   %div= f.submit "Sign up"
