@@ -16,3 +16,4 @@
 /tmp
 .elasticbeanstalk/
 starfruit.elasticbeanstalk/aws_credential_file
+config/local_env.yml
