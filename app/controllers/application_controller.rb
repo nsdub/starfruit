@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   # protect_from_forgery
   before_filter :configure_permitted_parameters, if: :devise_controller?
   protect_from_forgery with: :exception
+  include UserRolesHelper
   
   protected
 
@@ -19,4 +20,13 @@ class ApplicationController < ActionController::Base
       }
     end
   end
+  
+  def authenticate_admin
+    unless admin?
+      flash[:error] = "Permission denied."
+      redirect_to root_url and return
+      false
+    end
+  end
+
 end

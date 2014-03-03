@@ -2,7 +2,12 @@
 
 - if current_user
   %h4 You are signed in.
-  = link_to "Storefront", storefront_path(current_user.username)
+  - if seller?
+    = link_to "Storefront", storefront_path(current_user.username)
+  - elsif buyer?
+    = link_to "My Collection", collection_path(current_user.username)
+  - elsif admin?
+    = link_to "Admin Dashboard", admin_dashboard_path
 
   = link_to "Sign out", destroy_user_session_path
 - else

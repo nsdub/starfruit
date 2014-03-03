@@ -15,15 +15,4 @@ class User < ActiveRecord::Base
   }
   USER_TYPES_LIST = USER_TYPES.collect{ |name, details| ["#{details[:description]}", name] }
  
-  def is_buyer? 
-    self.role == "buyer"
-  end
-
-  def is_seller?
-   self.role == "seller"
-  end
-
-  def is_admin?
-   self.role == "admin"
-  end
 end
